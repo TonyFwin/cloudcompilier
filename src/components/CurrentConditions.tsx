@@ -24,7 +24,7 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
       <div className="flex flex-col space-y-0.5">
         <div className=" text-xl font-medium lg:text-2xl">{weatherData?.name}</div>
         <div className="text-sm font-light">
-          {getTimeFromOffset(weatherData?.timezone as number).toString()}
+          {getTimeFromOffset(weatherData?.timezone as number)}
         </div>
       </div>
     </div>
