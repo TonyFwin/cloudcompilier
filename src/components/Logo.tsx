@@ -1,5 +1,5 @@
 import { WiTornado } from 'react-icons/wi'
 
 export default function Logo() {
-  return <WiTornado />
+  return <WiTornado size={70} />
 }
