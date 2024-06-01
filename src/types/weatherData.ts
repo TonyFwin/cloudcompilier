@@ -10,8 +10,6 @@ interface WeatherItem {
   icon: string;
 }
 
-export interface Weather extends Array<WeatherItem>{}
-
 export interface Main {
   temp: number;
   feels_like: number;
@@ -40,7 +38,7 @@ export interface Sys {
 
 export interface WeatherData {
   coord: Coord;
-  weather: Weather[];
+  weather: WeatherItem[];
   base: string;
   main: Main;
   visibility: number;

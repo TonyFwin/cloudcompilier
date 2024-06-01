@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Coordinates } from '@/components/types/coordinates'
+import { Coordinates } from '@/types/coordinates'
 import { fetchCoordinates } from '@/api/coordinates'
 
 export const useGetCoordinates = (cityName: string, limit = 5) => {

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { WeatherData } from '@/components/types/weatherData'
+import { WeatherData } from '@/types/weatherData'
 import { fetchWeatherData } from '@/api/weather'
 
 export const useFetchWeather = (coordinates: { lat: number; lon: number } | null) => {
