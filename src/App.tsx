@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import CurrentConditions from './components/CurrentConditions'
-import HourlyForecast from './components/HourlyForecast'
+import HourlyForecastTable from './components/HourlyForecastTable'
 import Logo from './components/Logo'
 import Search from './components/Search'
 import WeatherDetails from './components/WeatherDetails'
@@ -19,8 +19,8 @@ function App() {
         </div>
         <div className="col-span-2 space-y-4">
           <Search setCoordinates={setCoordinates} />
-          <WeatherDetails />
-          <HourlyForecast />
+          <WeatherDetails coordinates={coordinates} />
+          <HourlyForecastTable coordinates={coordinates} />
         </div>
       </main>
     </>
