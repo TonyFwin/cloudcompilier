@@ -24,3 +24,7 @@ export const getWeatherIcon = (description: string): string => {
       return 'unknown'
   }
 }
+
+export const roundNumber = (num: number) => {
+  return Math.round(num)
+}
