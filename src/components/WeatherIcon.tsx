@@ -8,7 +8,7 @@ import {
   WiDayHaze,
 } from 'react-icons/wi'
 
-import { getWeatherIcon } from '@/utils/getWeatherIcon'
+import { getWeatherIcon } from '@/utils/weather.utils'
 
 const WeatherIcon = ({ description }: { description: string }) => {
   const iconName = getWeatherIcon(description)
