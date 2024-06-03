@@ -1,6 +1,6 @@
 import { useFetchWeather } from '@/hooks/useFetchWeather'
 import WeatherIcon from './WeatherIcon'
-import { getTimeFromOffset } from '@/utils/getTimeFromOffset'
+import { getDateStringOffset } from '@/utils/time.utils'
 
 interface CurrentConditionsProps {
   coordinates: { lat: number; lon: number } | null
@@ -22,7 +22,7 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
       <div className="flex flex-col space-y-0.5">
         <div className=" text-xl font-medium lg:text-2xl">{weatherData?.name}</div>
         <div className="text-sm font-light">
-          {weatherData && getTimeFromOffset(weatherData?.timezone as number)}
+          {weatherData && getDateStringOffset(weatherData?.timezone as number)}
         </div>
       </div>
     </div>
