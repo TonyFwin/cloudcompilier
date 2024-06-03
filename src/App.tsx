@@ -6,9 +6,10 @@ import Search from './components/Search'
 import WeatherDetails from './components/WeatherDetails'
 
 function App() {
-  const [coordinates, setCoordinates] = useState<{ lat: number; lon: number } | null>(
-    null,
-  )
+  const [coordinates, setCoordinates] = useState<{ lat: number; lon: number }>({
+    lat: 44.9772995,
+    lon: -93.2654692,
+  })
 
   return (
     <>

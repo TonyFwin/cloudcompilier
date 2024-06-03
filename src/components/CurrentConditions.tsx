@@ -3,11 +3,15 @@ import WeatherIcon from './WeatherIcon'
 import { getDateStringOffset } from '@/utils/time.utils'
 
 interface CurrentConditionsProps {
-  coordinates: { lat: number; lon: number } | null
+  coordinates: { lat: number; lon: number }
 }
 
 export default function CurrentConditions({ coordinates }: CurrentConditionsProps) {
-  const { data: weatherData, isLoading, error } = useFetchWeather(coordinates)
+  const {
+    data: weatherData,
+    isLoading,
+    error,
+  } = useFetchWeather({ lat: coordinates.lat, lon: coordinates.lon })
   // if (isLoading) return <div>Loading...</div>
   // if (error) return <div>Error: {error.message}</div>
   return (

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
-// import { useGetCoordinates } from '@/hooks/useFetchCoordinates'
-import { useFetchWeather } from '@/hooks/useFetchWeather'
+import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
 import { useQueryClient } from '@tanstack/react-query'
 
 interface SearchProps {
@@ -13,20 +12,23 @@ export default function Search({ setCoordinates }: SearchProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const queryClient = useQueryClient()
 
-  // const { data: coordinates, refetch: refetchCoordinates } =
-  //   useFetchCoordinates(searchTerm)
+  const coordinatesQuery = useFetchCoordinates(searchTerm)
 
-  const search = (event: React.SyntheticEvent) => {
+  const search = async (event: React.SyntheticEvent) => {
     event.preventDefault()
 
     if (searchTerm.length < 1) return
 
-    // Dummy lat/lon for example purposes; you should fetch real coordinates based on search term
-    const lat = 43.5488256
-    const lon = -96.7307737
+    const res = await coordinatesQuery.refetch()
+    const newCoordinates = res.data
 
-    setCoordinates({ lat, lon })
-    queryClient.invalidateQueries({ queryKey: ['weatherData'] })
+    console.log({ newCoordinates })
+
+    if (newCoordinates) {
+      setCoordinates({ lat: newCoordinates.lat, lon: newCoordinates.lon })
+      queryClient.invalidateQueries({ queryKey: ['weatherData'] })
+      queryClient.invalidateQueries({ queryKey: ['forecastData'] })
+    }
   }
 
   return (
@@ -37,7 +39,7 @@ export default function Search({ setCoordinates }: SearchProps) {
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
         />
-        <Button type="submit" onClick={search}>
+        <Button type="submit" onClick={search} disabled={coordinatesQuery.isLoading}>
           Search
         </Button>
       </form>
