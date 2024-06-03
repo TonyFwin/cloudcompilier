@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -32,17 +33,21 @@ export default function Search({ setCoordinates }: SearchProps) {
   }
 
   return (
-    <div>
-      <form className="flex w-full items-center">
-        <Input
-          placeholder="Search"
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
-        />
-        <Button type="submit" onClick={search} disabled={coordinatesQuery.isLoading}>
-          Search
-        </Button>
-      </form>
-    </div>
+    <form className="flex w-full items-center">
+      <Input
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+        className="rounded-none border-0 shadow-transparent"
+      />
+      <Button
+        type="submit"
+        onClick={search}
+        disabled={coordinatesQuery.isLoading}
+        className="border-0  bg-transparent shadow-transparent"
+      >
+        <MagnifyingGlassIcon className="text-black dark:text-white" />
+      </Button>
+    </form>
   )
 }

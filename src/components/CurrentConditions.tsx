@@ -1,6 +1,7 @@
 import { useFetchWeather } from '@/hooks/useFetchWeather'
 import WeatherIcon from './WeatherIcon'
-import { getDateStringOffset } from '@/utils/time.utils'
+import { dateTimeFromOffset } from '@/utils/time.utils'
+import { roundNumber } from '@/utils/weather.utils'
 
 interface CurrentConditionsProps {
   coordinates: { lat: number; lon: number }
@@ -15,19 +16,24 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   // if (isLoading) return <div>Loading...</div>
   // if (error) return <div>Error: {error.message}</div>
   return (
-    <div className="flex space-x-4">
+    <div className="flex items-center space-x-4 lg:space-x-6 dark:text-white">
       <div className="text-3xl">
-        {weatherData && <WeatherIcon description={weatherData.weather[0].main} />}
+        {weatherData && (
+          <WeatherIcon
+            description={weatherData.weather[0].main}
+            className="h-20 w-20 lg:h-28 lg:w-28"
+          />
+        )}
       </div>
-      <div className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-        {weatherData?.main.temp}
+      <div className="text-5xl font-extrabold tracking-tight lg:text-7xl">
+        {roundNumber(weatherData?.main.temp)}°c
       </div>
 
       <div className="flex flex-col space-y-0.5">
-        <div className=" text-xl font-medium lg:text-2xl">{weatherData?.name}</div>
-        <div className="text-sm font-light">
-          {weatherData && getDateStringOffset(weatherData?.timezone as number)}
+        <div className="text-2xl font-medium tracking-wide lg:text-5xl">
+          {weatherData?.name}
         </div>
+        <div className="text-sm font-light">{dateTimeFromOffset(weatherData?.dt)}</div>
       </div>
     </div>
   )
