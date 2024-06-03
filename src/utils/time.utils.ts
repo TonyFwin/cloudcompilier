@@ -1,14 +1,11 @@
 import { DateTime } from 'luxon'
 
-export function getDateStringOffset(timezoneOffset: number) {
-  const d = new Date()
-  const localTime = d.getTime()
-  const localOffset = d.getTimezoneOffset() * 60000
-  const utc = localTime + localOffset
-  return new Date(utc + 1000 * timezoneOffset).toDateString()
-}
-
-export function timeFromDateString(dateString: string) {
+export const timeFromDateString = (dateString: string) => {
   const dt = DateTime.fromSQL(dateString)
   return dt.toLocaleString(DateTime.TIME_SIMPLE)
+}
+
+export const dateTimeFromOffset = (timeStamp: number) => {
+  const dt = DateTime.fromSeconds(timeStamp)
+  return `${dt.toFormat('T ccc')}, ${dt.toFormat('d MMM yy')}`
 }
