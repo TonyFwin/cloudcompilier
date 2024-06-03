@@ -12,7 +12,6 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
       <ScrollArea className="h-[200px] w-[500px]">
         {[...Array(24)].map((_, i) => {
           return (
-            // Componetize this
             <HourlyForecastColumn
               key={i}
               iconDescription={'clear'}
