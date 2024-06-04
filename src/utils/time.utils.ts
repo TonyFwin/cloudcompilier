@@ -6,6 +6,7 @@ export const timeFromDateString = (dateString: string) => {
 }
 
 export const dateTimeFromTimeStamp = (timeStamp: number) => {
-  const dt = DateTime.fromSeconds(timeStamp)
+  const ts = Number(timeStamp)
+  const dt = DateTime.fromSeconds(ts)
   return `${dt.toFormat('T ccc')}, ${dt.toFormat('d MMM yy')}`
 }
