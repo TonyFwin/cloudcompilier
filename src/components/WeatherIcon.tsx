@@ -10,24 +10,30 @@ import {
 
 import { getWeatherIcon } from '@/utils/weather.utils'
 
-const WeatherIcon = ({ description, className }: { description: string; className?: string }) => {
+const WeatherIcon = ({
+  description,
+  className,
+}: {
+  description: string
+  className?: string
+}) => {
   const iconName = getWeatherIcon(description)
 
   switch (iconName) {
     case 'cloud':
-      return <WiCloud className={className}/>
+      return <WiCloud className={className} />
     case 'daySunny':
-      return <WiDaySunny className={className}/>
+      return <WiDaySunny className={className} />
     case 'snow':
-      return <WiSnow className={className}/>
+      return <WiSnow className={className} />
     case 'rain':
-      return <WiRain className={className}/>
+      return <WiRain className={className} />
     case 'thunder':
-      return <WiThunderstorm className={className}/>
+      return <WiThunderstorm className={className} />
     case 'tornado':
-      return <WiTornado className={className}/>
+      return <WiTornado className={className} />
     case 'haze':
-      return <WiDayHaze className={className}/>
+      return <WiDayHaze className={className} />
     default:
       return <p>Unknown Icon</p>
   }

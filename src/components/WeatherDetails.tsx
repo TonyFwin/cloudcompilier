@@ -12,7 +12,16 @@ interface WeatherDetailsProps {
 }
 
 export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
-  const { data: weatherData, isLoading, error } = useFetchWeather(coordinates)
+  const { data: weatherData, isLoading, isError } = useFetchWeather(coordinates)
+
+  // Todo: Add error and load state handling
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (isError) {
+    return <div>Something went wrong</div>
+  }
 
   return (
     <div className="dark:border:white w-full border-b-2 border-b-black pt-4 md:pt-8">

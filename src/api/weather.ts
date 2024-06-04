@@ -5,7 +5,7 @@ import { WeatherData } from '@/types/weather'
 export const fetchWeatherData = async (lat: number, lon: number) => {
   const apiKey = import.meta.env.VITE_API_KEY as string
 
-  const {data} = await axios.get<WeatherData>(
+  const { data } = await axios.get<WeatherData>(
     `${baseUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`,
   )
 
