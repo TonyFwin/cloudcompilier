@@ -13,12 +13,12 @@ function App() {
 
   return (
     <>
-      <main className=" flex h-screen w-screen flex-col px-20 py-12 md:flex-row ">
-        <div className="flex w-full justify-between md:block md:w-2/3 md:space-y-8">
+      <main className="flex h-full w-screen flex-col bg-pink-200 px-20 py-12 dark:bg-gray-800 md:flex-row">
+        <div className="md:w-3/5 flex w-full justify-between md:block md:space-y-8 lg:w-2/3">
           <Logo />
           <CurrentConditions coordinates={coordinates} />
         </div>
-        <div className="h-fit w-full space-y-4 divide-y divide-black bg-white bg-opacity-50 p-6 dark:divide-white md:w-1/3">
+        <div className="h-fit w-full space-y-4 divide-y divide-black bg-white bg-opacity-50 p-6 dark:divide-white md:w-2/5 lg:w-1/3">
           <Search setCoordinates={setCoordinates} />
           <WeatherDetails coordinates={coordinates} />
           <HourlyForecastTable coordinates={coordinates} />
