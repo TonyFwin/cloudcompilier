@@ -1,6 +1,6 @@
 import { useFetchWeather } from '@/hooks/useFetchWeather'
 import WeatherIcon from './WeatherIcon'
-import { dateTimeFromOffset } from '@/utils/time.utils'
+import { dateTimeFromTimeStamp } from '@/utils/time.utils'
 import { roundNumber } from '@/utils/weather.utils'
 
 interface CurrentConditionsProps {
@@ -16,7 +16,7 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   // if (isLoading) return <div>Loading...</div>
   // if (error) return <div>Error: {error.message}</div>
   return (
-    <div className="flex items-center space-x-4 lg:space-x-6 dark:text-white">
+    <div className="flex items-center space-x-4 dark:text-white lg:space-x-6">
       <div className="text-3xl">
         {weatherData && (
           <WeatherIcon
@@ -33,7 +33,9 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
         <div className="text-2xl font-medium tracking-wide lg:text-5xl">
           {weatherData?.name}
         </div>
-        <div className="text-sm font-light">{dateTimeFromOffset(weatherData?.dt)}</div>
+        <div className="text-sm font-light lg:text-lg">
+          {dateTimeFromTimeStamp(weatherData?.dt)}
+        </div>
       </div>
     </div>
   )
