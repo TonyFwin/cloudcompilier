@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { baseUrl } from '@/config'
-import { WeatherData } from '@/types/weatherData'
+import { WeatherData } from '@/types/weather'
 
 export const fetchWeatherData = async (lat: number, lon: number) => {
   const apiKey = import.meta.env.VITE_API_KEY as string

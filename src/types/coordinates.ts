@@ -3,7 +3,7 @@ export interface Coordinates {
   lon: number
 }
 
-export interface OpenWeatherMapCoordinates {
+export interface CoordinatesData {
   country: string
   lat: number
   lon: number
