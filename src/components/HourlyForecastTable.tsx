@@ -1,6 +1,5 @@
 import { useFetchForecast } from '@/hooks/useFetchForecast'
 import HourlyForecastColumn from './HourlyForecastColumn'
-import { ScrollArea, ScrollBar } from './ui/scroll-area'
 
 interface HourlyForecastProps {
   coordinates: { lat: number; lon: number }
@@ -10,7 +9,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
   const { data: forecastData, isLoading, error } = useFetchForecast(coordinates)
   return (
     <div className="pt-4">
-      <ScrollArea className="flex h-full w-full flex-col overflow-y-auto">
+      <div className="flex h-full w-full flex-col overflow-y-auto">
         <div className='flex flex-col space-y-4'>
           {forecastData?.list.map((el) => {
             return (
@@ -24,8 +23,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
             )
           })}
         </div>
-        <ScrollBar orientation="vertical" />
-      </ScrollArea>
+      </div>
     </div>
   )
 }
