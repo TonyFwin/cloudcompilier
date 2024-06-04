@@ -23,12 +23,8 @@ export default function Search({ setCoordinates }: SearchProps) {
     const res = await coordinatesQuery.refetch()
     const newCoordinates = res.data
 
-    console.log({ newCoordinates })
-
-    if (newCoordinates) {
-      setCoordinates({ lat: newCoordinates.lat, lon: newCoordinates.lon })
-      queryClient.invalidateQueries({ queryKey: ['weatherData'] })
-      queryClient.invalidateQueries({ queryKey: ['forecastData'] })
+    if (newCoordinates && newCoordinates.length > 0) {
+      setCoordinates({ lat: newCoordinates[0].lat, lon: newCoordinates[0].lon })
     }
   }
 
@@ -44,7 +40,7 @@ export default function Search({ setCoordinates }: SearchProps) {
         type="submit"
         onClick={search}
         disabled={coordinatesQuery.isLoading}
-        className="border-0  bg-transparent shadow-transparent"
+        className="border-0 bg-transparent shadow-transparent"
       >
         <MagnifyingGlassIcon className="text-black dark:text-white" />
       </Button>
