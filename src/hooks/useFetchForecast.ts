@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { Forecast } from '@/types/forecast'
 import { fetchForecastData } from '@/api/forecast'
 
 export const useFetchForecast = (coordinates: { lat: number; lon: number }) => {
