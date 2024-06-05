@@ -21,7 +21,7 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
         {weatherData && (
           <WeatherIcon
             code={weatherData.weather[0].id}
-            className="h-20 w-20 lg:h-28 lg:w-28"
+            className="h-20 w-20 lg:h-24 lg:w-24 xl:h-28 xl:w-28"
           />
         )}
       </div>

@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <main className="flex h-full w-screen flex-col bg-pink-200 px-20 py-12 dark:bg-gray-800 md:flex-row">
-        <div className="md:w-3/5 flex w-full justify-between md:block md:space-y-8 lg:w-2/3">
+        <div className="w-full flex-col justify-between md:block md:w-3/5 md:space-y-8 lg:w-2/3">
           <Logo />
           <CurrentConditions coordinates={coordinates} />
         </div>
