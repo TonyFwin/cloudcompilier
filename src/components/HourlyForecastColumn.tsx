@@ -5,19 +5,19 @@ import { capitalizeSentence } from '@/utils/strings.utils'
 
 interface HourlyForecastColumnProps {
   description: string
-  iconDescription: string
+  iconCode: number
   dateString: string
   temperature: number
 }
 export default function HourlyForecastColumn({
   description,
-  iconDescription,
+  iconCode,
   dateString,
   temperature,
 }: HourlyForecastColumnProps) {
   return (
     <div className="flex w-full space-x-2 md:space-x-4">
-      <WeatherIcon description={iconDescription} className="h-12 w-12" />
+      <WeatherIcon code={iconCode} className="h-12 w-12" />
       <div className="col-span-2 flex w-full justify-between">
         <div>
           <p>{timeFromDateString(dateString)} </p>

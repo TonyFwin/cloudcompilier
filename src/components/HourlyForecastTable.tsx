@@ -16,7 +16,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
             return (
               <HourlyForecastColumn
                 key={el.dt}
-                iconDescription={el.weather[0].main}
+                iconCode={el.weather[0].id}
                 description={el.weather[0].description}
                 dateString={el.dt_txt}
                 temperature={el.main.temp}
