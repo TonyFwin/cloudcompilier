@@ -6,6 +6,7 @@ import {
   WiRaindrop,
   WiStrongWind,
 } from 'react-icons/wi'
+import SkeletonWeatherDetails from './skeletons/SkeletonWeatherDetails'
 
 interface WeatherDetailsProps {
   coordinates: { lat: number; lon: number }
@@ -14,9 +15,8 @@ interface WeatherDetailsProps {
 export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
   const { data: weatherData, isLoading, isError } = useFetchWeather(coordinates)
 
-  // Todo: Add error and load state handling
   if (isLoading) {
-    return <div>Loading...</div>
+    return <SkeletonWeatherDetails />
   }
 
   if (isError) {
@@ -28,6 +28,7 @@ export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
       <h2 className="mb-4 tracking-wider text-slate-600">
         {weatherData?.weather[0].description.toUpperCase()}
       </h2>
+
       <div className="flex flex-col space-y-4 pl-2">
         <WeatherDetail
           description="Max"

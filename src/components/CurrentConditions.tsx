@@ -2,6 +2,8 @@ import { useFetchWeather } from '@/hooks/useFetchWeather'
 import WeatherIcon from './WeatherIcon'
 import { dateTimeFromTimeStamp } from '@/utils/time.utils'
 import { roundNumber } from '@/utils/weather.utils'
+import SkeletonCurrentConditions from './skeletons/SkeletonCurrentConditions'
+import Error from './Error'
 
 interface CurrentConditionsProps {
   coordinates: { lat: number; lon: number }
@@ -13,8 +15,11 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
     isLoading,
     error,
   } = useFetchWeather({ lat: coordinates.lat, lon: coordinates.lon })
-  // if (isLoading) return <div>Loading...</div>
-  // if (error) return <div>Error: {error.message}</div>
+
+  if (isLoading) return <SkeletonCurrentConditions />
+
+  if (error) return <Error message={error.message} />
+  
   return (
     <div className="flex items-center space-x-4 dark:text-white lg:space-x-6">
       <div className="text-3xl">
