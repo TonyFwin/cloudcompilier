@@ -9,7 +9,8 @@ interface HourlyForecastProps {
 }
 
 export default function HourlyForecastTable({ coordinates }: HourlyForecastProps) {
-  const { data: forecastData, isLoading, error } = useFetchForecast(coordinates)
+  const { data: forecastData, isLoading, isError, error } = useFetchForecast(coordinates)
+
   if (isLoading) {
     return (
       <div className="flex flex-col space-y-4">
@@ -20,7 +21,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
     )
   }
 
-  if (error) {
+  if (isError) {
     return <Error message={error.message} />
   }
 

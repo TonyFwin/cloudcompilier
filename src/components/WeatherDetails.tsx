@@ -7,20 +7,21 @@ import {
   WiStrongWind,
 } from 'react-icons/wi'
 import SkeletonWeatherDetails from './skeletons/SkeletonWeatherDetails'
+import Error from './Error'
 
 interface WeatherDetailsProps {
   coordinates: { lat: number; lon: number }
 }
 
 export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
-  const { data: weatherData, isLoading, isError } = useFetchWeather(coordinates)
+  const { data: weatherData, isLoading, isError, error } = useFetchWeather(coordinates)
 
   if (isLoading) {
     return <SkeletonWeatherDetails />
   }
 
   if (isError) {
-    return <div>Something went wrong</div>
+    return <Error message={error.message} />
   }
 
   return (

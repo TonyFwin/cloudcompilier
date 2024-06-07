@@ -13,13 +13,18 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   const {
     data: weatherData,
     isLoading,
+    isError,
     error,
   } = useFetchWeather({ lat: coordinates.lat, lon: coordinates.lon })
 
-  if (isLoading) return <SkeletonCurrentConditions />
+  if (isLoading) {
+    return <SkeletonCurrentConditions />
+  }
 
-  if (error) return <Error message={error.message} />
-  
+  if (isError) {
+    return <Error message={error.message} />
+  }
+
   return (
     <div className="flex items-center space-x-4 dark:text-white lg:space-x-6">
       <div className="text-3xl">
