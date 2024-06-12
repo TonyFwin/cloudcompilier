@@ -21,9 +21,9 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="rounded-md bg-gray-800 px-4 py-2 text-white dark:bg-white dark:text-black"
+      className="absolute bottom-16 left-16 h-12 w-12 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-black"
     >
-      {darkMode ? 'Light Mode' : 'Dark Mode'}
+      {darkMode ? 'Light' : 'Dark'}
     </button>
   )
 }
