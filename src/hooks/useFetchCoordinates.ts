@@ -6,6 +6,5 @@ export const useFetchCoordinates = (cityName: string, limit = 5) => {
     queryKey: ['coordinates', cityName],
     queryFn: () => fetchCoordinates(cityName, limit),
     enabled: false,
-    // refetchOnWindowFocus: false,
   })
 }
