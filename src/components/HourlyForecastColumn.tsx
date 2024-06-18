@@ -17,8 +17,8 @@ export default function HourlyForecastColumn({
 }: HourlyForecastColumnProps) {
   return (
     <div className="flex w-full space-x-2 md:space-x-4">
-      <WeatherIcon code={iconCode} className="h-12 w-12" />
-      <div className="col-span-2 flex w-full justify-between">
+      <WeatherIcon code={iconCode} className="h-12 w-12 xl:h-14 xl:w-14" />
+      <div className="col-span-2 flex w-full justify-between xl:text-lg">
         <div>
           <p>{timeFromDateString(dateString)} </p>
           <p>{capitalizeSentence(description)}</p>

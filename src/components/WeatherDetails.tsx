@@ -26,7 +26,7 @@ export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
 
   return (
     <div className="dark:border:white w-full border-b-2 border-b-black pt-4 md:pt-8">
-      <h2 className="mb-4 tracking-wider text-slate-600 dark:text-slate-50">
+      <h2 className="mb-4 tracking-wider text-slate-600 dark:text-slate-50 xl:text-xl">
         {weatherData?.weather[0].description.toUpperCase()}
       </h2>
 

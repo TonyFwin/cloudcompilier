@@ -26,8 +26,8 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   }
 
   return (
-    <div className="flex items-center space-x-4 dark:text-white lg:space-x-6">
-      <div className="text-3xl">
+    <div className="my-4 flex items-center space-x-0 dark:text-white md:mb-0 md:flex-nowrap md:justify-normal md:space-x-4 lg:space-x-6">
+      <div className="order-3 text-3xl sm:order-2">
         {weatherData && (
           <WeatherIcon
             code={weatherData.weather[0].id}
@@ -35,15 +35,15 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
           />
         )}
       </div>
-      <div className="text-5xl font-extrabold tracking-tight lg:text-7xl">
+      <div className="order-2 text-4xl font-extrabold tracking-tight sm:order-3 sm:text-5xl lg:text-7xl">
         {weatherData && `${roundNumber(weatherData?.main.temp)}°c`}
       </div>
 
-      <div className="flex flex-col space-y-0.5">
+      <div className="order-1 flex w-full flex-col space-y-2 md:order-4 md:w-auto md:space-y-0.5">
         <div className="text-2xl font-medium tracking-wide lg:text-5xl">
           {weatherData?.name}
         </div>
-        <div className="text-sm font-light lg:text-lg">
+        <div className="text-sm font-light lg:text-lg xl:text-xl">
           {weatherData && dateTimeFromTimeStamp(weatherData?.dt)}
         </div>
       </div>

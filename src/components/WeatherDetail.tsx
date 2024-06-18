@@ -20,10 +20,10 @@ export default function WeatherDetail({
     type === 'max' ? 'text-red-500' : type === 'min' ? 'text-blue-500' : ''
   return (
     <div className="flex items-center justify-between">
-      <p className="text-black dark:text-white">{description}</p>
+      <p className="text-black dark:text-white xl:text-xl">{description}</p>
 
       <div className="flex items-center">
-        <div>
+        <div className="xl:text-lg">
           {roundNumber(value)}
           {unit}
         </div>

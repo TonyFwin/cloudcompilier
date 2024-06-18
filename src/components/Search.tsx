@@ -34,7 +34,7 @@ export default function Search({ setCoordinates }: SearchProps) {
         placeholder="Search"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
-        className="rounded-none border-0 shadow-transparent dark:text-white dark:placeholder-gray-50"
+        className="rounded-none border-0 shadow-transparent dark:text-white dark:placeholder-gray-50 xl:text-xl"
       />
       <Button
         type="submit"
@@ -42,7 +42,7 @@ export default function Search({ setCoordinates }: SearchProps) {
         disabled={coordinatesQuery.isLoading}
         className="border-0 bg-transparent shadow-transparent"
       >
-        <MagnifyingGlassIcon className="text-black placeholder-gray-700 dark:text-white" />
+        <MagnifyingGlassIcon className="text-black placeholder-gray-700 dark:text-white xl:text-xl" />
       </Button>
     </form>
   )
