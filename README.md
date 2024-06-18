@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+# cloudcompiler
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **cloudcompiler**, an application for accurate and up to date weather information. You can search for any city and get comprehensive weather updates including current conditions, hourly forecasts and more.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Node.js](https://nodejs.org/)
 
-## Expanding the ESLint configuration
+- [npm](https://www.npmjs.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [OpenWeatherMap Api Key](https://openweathermap.org/api) (free signup required)
 
-- Configure the top-level `parserOptions` property like this:
+### Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Unzip and move the repository into a folder of your choosing
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the project directory
+
+3. Install dependencies
+
+   ```shell
+   npm install
+   ```
+
+4. Obtain an OpenWeatherMap API Key
+
+   - Go to OpenWeatherMap API and sign up for a free account
+
+   - Generate a new API key form your account dashboard
+
+5. Set up your environment variables
+
+   - Create a `.env` file in the root of the project and add your OpenWeatherMap API key:
+
+     ```shell
+     VITE_API_KEY=your_api_key_here
+     ```
+
+### Running the App
+
+1. Start the dev server
+
+   ```shell
+   npm run dev
+   ```
+
+2. Open your browser and navigate to the address you see in your console
+
+   ```shell
+   http://localhost:3000 #example address, your machine may be using a different port
+   ```
