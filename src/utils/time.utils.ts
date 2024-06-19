@@ -2,7 +2,8 @@ import { DateTime } from 'luxon'
 
 export const timeFromDateString = (dateString: string) => {
   const dt = DateTime.fromSQL(dateString)
-  return dt.toLocaleString(DateTime.TIME_SIMPLE)
+  return dt.toFormat('ccc, LLL dd, HH:mm')
+  // return dt.toLocaleString(DateTime.DATETIME_SHORT)
 }
 
 export const dateTimeFromTimeStamp = (timeStamp: number) => {
