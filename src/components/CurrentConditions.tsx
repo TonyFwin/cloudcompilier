@@ -26,16 +26,16 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   }
 
   return (
-    <div className="my-4 flex items-center space-x-0 dark:text-white md:mb-0 md:flex-nowrap md:justify-normal md:space-x-4 lg:space-x-6">
+    <div className="my-4 flex flex-wrap items-center space-x-0 dark:text-white sm:flex-nowrap md:mb-0 md:justify-normal md:space-x-4 lg:space-x-6">
       <div className="order-3 text-3xl sm:order-2">
         {weatherData && (
           <WeatherIcon
             code={weatherData.weather[0].id}
-            className="h-20 w-20 lg:h-24 lg:w-24 xl:h-28 xl:w-28"
+            className="h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 xl:h-28 xl:w-28"
           />
         )}
       </div>
-      <div className="order-2 text-4xl font-extrabold tracking-tight sm:order-3 sm:text-5xl lg:text-7xl">
+      <div className="order-2 text-2xl font-extrabold tracking-tight sm:order-3 sm:text-4xl md:text-5xl lg:text-7xl">
         {weatherData && `${roundNumber(weatherData?.main.temp)}°c`}
       </div>
 
