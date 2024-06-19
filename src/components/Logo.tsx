@@ -5,7 +5,6 @@ export default function Logo() {
   return (
     <div className="flex flex-row items-center">
       <WiDaySunnyOvercast className={`${logoClasses}`} />
-      {/* <WiNightAltCloudy className={`${logoClasses}`} /> */}
       <p className="cursor-default text-sm font-semibold uppercase tracking-widest xl:text-lg">
         cloudcompiler
       </p>
