@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <main className="flex h-full w-screen flex-col bg-[url(light_background.png)] bg-cover px-20 py-12 dark:bg-gray-800 dark:bg-[url(dark_background.png)] md:flex-row lg:h-screen">
+      <main className="flex h-screen w-screen flex-col bg-[url(light_background.png)] bg-cover px-20 py-12 dark:bg-gray-800 dark:bg-[url(dark_background.png)] md:flex-row">
         <div className="w-full flex-col justify-between md:block md:w-3/5 md:space-y-8 lg:w-2/3 xl:w-7/12">
           <Logo />
           <CurrentConditions coordinates={coordinates} />
