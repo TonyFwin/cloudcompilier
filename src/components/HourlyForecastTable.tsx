@@ -15,7 +15,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
     return (
       <div className="flex flex-col space-y-4">
         {[...Array(6)].map((_, i) => {
-          return <SkeletonHourlyForecast key={i} />
+          return <SkeletonHourlyForecast key={i} testId={i} />
         })}
       </div>
     )
@@ -27,6 +27,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
 
   return (
     <div className="flex h-fit w-full flex-col space-y-4 overflow-y-auto pt-4">
+      <h2 className="sr-only">Hourly Forecast</h2>
       {forecastData?.list.map((el: ForecastItem) => {
         return (
           <HourlyForecastColumn

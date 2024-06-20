@@ -1,8 +1,15 @@
 import { Skeleton } from '@/components/ui/skeleton'
 
-export default function SkeletonHourlyForecast() {
+interface SkeletonHourlyForecastProps {
+  testId: number
+}
+
+export default function SkeletonHourlyForecast({ testId }: SkeletonHourlyForecastProps) {
   return (
-    <div className="flex w-full items-center space-x-2 md:space-x-4 pt-4">
+    <div
+      data-testid={`skeleton-${testId}`}
+      className="flex w-full items-center space-x-2 pt-4 md:space-x-4"
+    >
       <Skeleton className="h-8 w-8 rounded-full" />
       <div className="flex w-full justify-between">
         <div className="space-y-2">
