@@ -1,24 +1,13 @@
 import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-const queryClient = new QueryClient()
-
+import { waitFor } from '@testing-library/react'
 import App from '../App'
+import { renderWithClient } from './utils'
 
-describe('Renders main page correctly', async () => {
-  afterEach(() => {
-    cleanup()
-  })
-
+describe('Renders main page correctly', () => {
   it('Should render the page correctly', async () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>,
-    )
-    const h1 = await screen.queryByText('cloudcompiler')
+    const result = renderWithClient(<App />)
 
-    expect(h1).not.toBeNull()
+    await waitFor(() => expect(result.getByText('cloudcompiler')).not.toBeNull())
+    expect(result.findByPlaceholderText('search')).not.toBeNull()
   })
 })
