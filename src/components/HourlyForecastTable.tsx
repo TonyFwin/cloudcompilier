@@ -26,7 +26,7 @@ export default function HourlyForecastTable({ coordinates }: HourlyForecastProps
   }
 
   return (
-    <div className="flex h-full w-full flex-col space-y-4 overflow-y-auto pt-4">
+    <div className="flex h-fit w-full flex-col space-y-4 overflow-y-auto pt-4">
       {forecastData?.list.map((el: ForecastItem) => {
         return (
           <HourlyForecastColumn

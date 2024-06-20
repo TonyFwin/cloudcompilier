@@ -26,8 +26,8 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
   }
 
   return (
-    <div className="my-4 flex flex-wrap items-center space-x-0 dark:text-white sm:flex-nowrap md:mb-0 md:justify-normal md:space-x-4 lg:space-x-6">
-      <div className="order-3 text-3xl sm:order-2">
+    <div className="my-4 flex flex-wrap items-center justify-center space-x-0  dark:text-white sm:flex-nowrap sm:space-x-4 md:mb-0 md:justify-normal lg:space-x-6">
+      <div className="order-3 text-3xl sm:order-2 md:w-auto">
         {weatherData && (
           <WeatherIcon
             code={weatherData.weather[0].id}
@@ -35,11 +35,10 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
           />
         )}
       </div>
-      <div className="order-2 text-2xl font-extrabold tracking-tight sm:order-3 sm:text-4xl md:text-5xl lg:text-7xl">
+      <div className="order-2 text-3xl font-extrabold tracking-tight sm:order-3 sm:text-4xl md:w-auto md:text-5xl lg:text-7xl">
         {weatherData && `${roundNumber(weatherData?.main.temp)}°c`}
       </div>
-
-      <div className="order-1 flex w-full flex-col space-y-2 md:order-4 md:w-auto md:space-y-0.5">
+      <div className="order-1 flex w-full flex-col items-center space-y-2 sm:order-4 sm:w-auto md:items-start md:space-y-0.5">
         <div className="text-2xl font-medium tracking-wide lg:text-5xl">
           {weatherData?.name}
         </div>
