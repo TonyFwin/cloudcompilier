@@ -24,7 +24,8 @@ describe('useFetchCoordinates hook', () => {
         return HttpResponse.error()
       }),
     )
-    const { result } = renderHook(() => useFetchCoordinates('Some place'), {
+
+    const { result } = renderHook(() => useFetchCoordinates('Some place', true), {
       wrapper: createWrapper(),
     })
 
@@ -51,6 +52,7 @@ describe('useFetchWeather hook', () => {
         return HttpResponse.error()
       }),
     )
+
     const { result } = renderHook(() => useFetchWeather({ lat: 123, lon: 456 }), {
       wrapper: createWrapper(),
     })
