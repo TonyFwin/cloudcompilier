@@ -29,15 +29,16 @@ export const mockCoordinatesData: CoordinatesData[] = [
     state: 'New York',
   },
 ]
+
 export const mockWeatherData: WeatherData = {
   coord: { lat: 52.52, lon: 13.41 },
   weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
   base: 'stations',
   main: {
-    temp: 293.15,
-    feels_like: 293.59,
-    temp_min: 293.15,
-    temp_max: 293.15,
+    temp: 20,
+    feels_like: 20,
+    temp_min: 20,
+    temp_max: 20,
     pressure: 1013,
     humidity: 77,
   },
@@ -60,10 +61,10 @@ export const mockForecastData: ForecastData = {
     {
       dt: 1605182400,
       main: {
-        temp: 293.15,
-        feels_like: 293.59,
-        temp_min: 293.15,
-        temp_max: 293.15,
+        temp: 20,
+        feels_like: 20,
+        temp_min: 20,
+        temp_max: 20,
         pressure: 1013,
         sea_level: 1013,
         grnd_level: 1011,
