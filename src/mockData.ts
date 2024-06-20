@@ -1,26 +1,34 @@
-import { Coordinates, CoordinatesData } from "./types/coordinates";
-import { ForecastData } from "./types/forecast"
-import { WeatherData } from "./types/weather"
+import { Coordinates, CoordinatesData } from './types/coordinates'
+import { ForecastData } from './types/forecast'
+import { WeatherData } from './types/weather'
 
 export const mockCoordinates: Coordinates = {
   lat: 52.52,
   lon: 13.41,
-};
+}
 
-export const mockCoordinatesData: CoordinatesData = {
-  country: 'Germany',
-  lat: 52.52,
-  lon: 13.41,
-  local_names: [
-    { de: 'Berlin' },
-    { en: 'Berlin' },
-    { es: 'Berlín' },
-    // Add more local names as needed
-  ],
-  name: 'Berlin',
-  state: 'Berlin',
-};
-
+export const mockCoordinatesData: CoordinatesData[] = [
+  {
+    country: 'Germany',
+    lat: 52.52,
+    lon: 13.41,
+    local_names: [
+      { de: 'Berlin' },
+      { en: 'Berlin' },
+      { es: 'Berlín' },
+    ],
+    name: 'Berlin',
+    state: 'Berlin',
+  },
+  {
+    country: 'United States',
+    lat: 40.7128,
+    lon: -74.006,
+    local_names: [{ en: 'New York' }],
+    name: 'New York',
+    state: 'New York',
+  },
+]
 export const mockWeatherData: WeatherData = {
   coord: { lat: 52.52, lon: 13.41 },
   weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],

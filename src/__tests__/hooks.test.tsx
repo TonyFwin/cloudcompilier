@@ -5,34 +5,34 @@ import { createWrapper } from './utils'
 import { server } from '../setupTests'
 import { useFetchWeather } from '@/hooks/useFetchWeather'
 import { useFetchForecast } from '@/hooks/useFetchForecast'
-// import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
+import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
 
-// describe('useFetchCoordinates hook', () => {
-//   test('successful query hook', async () => {
-//     const { result } = renderHook(() => useFetchCoordinates('Berlin'), {
-//       wrapper: createWrapper(),
-//     })
+describe('useFetchCoordinates hook', () => {
+  test('successful query hook', async () => {
+    const { result } = renderHook(() => useFetchCoordinates('Berlin', true), {
+      wrapper: createWrapper(),
+    })
 
-//     await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
-//     expect(result.current.data?.country).toBe('Germany')
-//   })
+    expect(result.current.data?.[0].country).toBe('Germany')
+  })
 
-//   test('failure query hook', async () => {
-//     server.use(
-//       http.get('*', () => {
-//         return HttpResponse.error()
-//       }),
-//     )
-//     const { result } = renderHook(() => useFetchCoordinates('Some place'), {
-//       wrapper: createWrapper(),
-//     })
+  test('failure query hook', async () => {
+    server.use(
+      http.get('*', () => {
+        return HttpResponse.error()
+      }),
+    )
+    const { result } = renderHook(() => useFetchCoordinates('Some place'), {
+      wrapper: createWrapper(),
+    })
 
-//     await waitFor(() => expect(result.current.isError).toBe(true))
+    await waitFor(() => expect(result.current.isError).toBe(true))
 
-//     expect(result.current.error).toBeDefined()
-//   })
-// })
+    expect(result.current.error).toBeDefined()
+  })
+})
 
 describe('useFetchWeather hook', () => {
   test('successful query hook', async () => {
