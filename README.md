@@ -49,3 +49,10 @@ Welcome to **cloudcompiler**, an application for accurate and up to date weather
    ```shell
    http://localhost:3000 #example address, your machine may be using a different port
    ```
+
+### Running the tests
+1. Start the dev server
+
+   ```shell
+   npm run test
+   ```
