@@ -41,6 +41,7 @@ export default function Search({ setCoordinates }: SearchProps) {
         onClick={search}
         disabled={coordinatesQuery.isLoading}
         className="border-0 bg-transparent shadow-transparent"
+        aria-label="Search"
       >
         <MagnifyingGlassIcon className="text-black placeholder-gray-700 dark:text-white xl:text-xl" />
       </Button>

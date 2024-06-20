@@ -27,6 +27,7 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
 
   return (
     <div className="my-4 flex flex-wrap items-center justify-center space-x-0  dark:text-white sm:flex-nowrap sm:space-x-4 md:mb-0 md:justify-normal lg:space-x-6">
+      <h2 className="sr-only">Current Conditions</h2>
       <div className="order-3 text-3xl sm:order-2 md:w-auto">
         {weatherData && (
           <WeatherIcon
