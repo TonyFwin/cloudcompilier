@@ -2,11 +2,11 @@ import axiosInstance from './axiosInstance'
 import { baseUrl } from '@/config'
 import { CoordinatesData } from '@/types/coordinates'
 
-export const fetchCoordinates = async (cityName: string, limit: number) => {
+export const fetchCoordinates = async (cityName: string) => {
   const apiKey = import.meta.env.VITE_API_KEY as string
 
   const { data } = await axiosInstance.get<CoordinatesData[]>(
-    `${baseUrl}geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`,
+    `${baseUrl}geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`,
   )
 
   return data

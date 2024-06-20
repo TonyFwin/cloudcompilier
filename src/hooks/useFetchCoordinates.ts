@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchCoordinates } from '@/api/coordinates'
 
-export const useFetchCoordinates = (cityName: string, limit = 5) => {
+export const useFetchCoordinates = (cityName: string, enabled:boolean = false) => {
   return useQuery({
     queryKey: ['coordinates', cityName],
-    queryFn: () => fetchCoordinates(cityName, limit),
-    enabled: false,
+    queryFn: () => fetchCoordinates(cityName),
+    enabled,
   })
 }
