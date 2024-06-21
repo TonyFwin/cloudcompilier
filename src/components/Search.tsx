@@ -3,7 +3,6 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
-import { useQueryClient } from '@tanstack/react-query'
 
 interface SearchProps {
   setCoordinates: (coordinates: { lat: number; lon: number }) => void
@@ -11,7 +10,6 @@ interface SearchProps {
 
 export default function Search({ setCoordinates }: SearchProps) {
   const [searchTerm, setSearchTerm] = useState('')
-  const queryClient = useQueryClient()
 
   const coordinatesQuery = useFetchCoordinates(searchTerm)
 

@@ -61,7 +61,7 @@ export interface Main {
 export interface Wind {
   speed: number
   deg: number
-  gust?: number // optional property
+  gust?: number
 }
 
 export interface Clouds {
