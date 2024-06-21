@@ -6,14 +6,14 @@ import { cleanup } from '@testing-library/react'
 import { mockWeatherData, mockForecastData, mockCoordinatesData } from './mockData.ts'
 
 export const server = setupServer(
+  http.get(/.*forecast.*/, () => {
+    return HttpResponse.json(mockForecastData)
+  }),
   http.get(/.*geo.*/, () => {
     return HttpResponse.json(mockCoordinatesData)
   }),
   http.get(/.*weather.*/, () => {
     return HttpResponse.json(mockWeatherData)
-  }),
-  http.get(/.*forecast.*/, () => {
-    return HttpResponse.json(mockForecastData)
   }),
 )
 
@@ -22,5 +22,5 @@ afterEach(() => {
 })
 
 beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
+afterEach(() => server.resetHandlers())
