@@ -71,7 +71,7 @@ describe('useFetchForecast hook', () => {
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
-    expect(result.current.data?.cod).toBe(200)
+    expect(result.current.data?.list[0].weather[0].main).toBe('Rain')
   })
 
   test('failure query hook', async () => {
