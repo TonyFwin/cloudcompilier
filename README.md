@@ -2,6 +2,10 @@
 
 Welcome to **cloudcompiler**, an application for accurate and up to date weather information. You can search for any city and get comprehensive weather updates including current conditions, hourly forecasts and more.
 
+## Demo URL
+
+Link to live demo -> [Here](https://cloudcompilier.netlify.app/)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/)
@@ -51,6 +55,7 @@ Welcome to **cloudcompiler**, an application for accurate and up to date weather
    ```
 
 ### Running the tests
+
 1. Start the dev server
 
    ```shell
