@@ -6,13 +6,14 @@ const ThemeSwitcher = () => {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true'
+    const storedDarkMode = localStorage.getItem('darkMode')
+    const isDarkMode = storedDarkMode ? JSON.parse(storedDarkMode) : false
     setDarkMode(isDarkMode)
   }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode)
-    localStorage.setItem('darkMode', darkMode)
+    localStorage.setItem('darkMode', darkMode.toString())
   }, [darkMode])
 
   const toggleDarkMode = () => {
