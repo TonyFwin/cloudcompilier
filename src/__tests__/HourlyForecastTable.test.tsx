@@ -10,7 +10,6 @@ describe('HourlyForecastTable Component', () => {
 
   test('Displays forecast data', async () => {
     const result = renderWithClient(<HourlyForecastTable coordinates={coordinates} />)
-    console.log('display forecast data test')
 
     await waitFor(() => expect(result.getByText(/Light Rain/i)).toBeInTheDocument())
   })
