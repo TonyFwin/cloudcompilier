@@ -37,7 +37,7 @@ describe('useFetchCoordinates hook', () => {
 
 describe('useFetchWeather hook', () => {
   test('successful query hook', async () => {
-    const { result } = renderHook(() => useFetchWeather({ lat: 52.52, lon: 13.41 }), {
+    const { result } = renderHook(() => useFetchWeather({ lat: 52.52, lon: 13.41 }, 'metric'), {
       wrapper: createWrapper(),
     })
 
@@ -53,7 +53,7 @@ describe('useFetchWeather hook', () => {
       }),
     )
 
-    const { result } = renderHook(() => useFetchWeather({ lat: 123, lon: 456 }), {
+    const { result } = renderHook(() => useFetchWeather({ lat: 123, lon: 456 }, 'metric'), {
       wrapper: createWrapper(),
     })
 
@@ -65,7 +65,7 @@ describe('useFetchWeather hook', () => {
 
 describe('useFetchForecast hook', () => {
   test('successful query hook', async () => {
-    const { result } = renderHook(() => useFetchForecast({ lat: 52.52, lon: 13.41 }), {
+    const { result } = renderHook(() => useFetchForecast({ lat: 52.52, lon: 13.41 }, 'metric'), {
       wrapper: createWrapper(),
     })
 
@@ -80,7 +80,7 @@ describe('useFetchForecast hook', () => {
         return HttpResponse.error()
       }),
     )
-    const { result } = renderHook(() => useFetchForecast({ lat: 123, lon: 456 }), {
+    const { result } = renderHook(() => useFetchForecast({ lat: 123, lon: 456 }, 'metric'), {
       wrapper: createWrapper(),
     })
 
