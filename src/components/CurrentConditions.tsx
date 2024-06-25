@@ -4,18 +4,21 @@ import { dateTimeFromTimeStamp } from '@/utils/time.utils'
 import { roundNumber } from '@/utils/weather.utils'
 import SkeletonCurrentConditions from './skeletons/SkeletonCurrentConditions'
 import Error from './Error'
+import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
 
 interface CurrentConditionsProps {
   coordinates: { lat: number; lon: number }
 }
 
 export default function CurrentConditions({ coordinates }: CurrentConditionsProps) {
+  const { data: unit } = useUnitOfMeasurement()
+
   const {
     data: weatherData,
     isLoading,
     isError,
     error,
-  } = useFetchWeather({ lat: coordinates.lat, lon: coordinates.lon })
+  } = useFetchWeather({ lat: coordinates.lat, lon: coordinates.lon }, unit)
 
   if (isLoading) {
     return <SkeletonCurrentConditions />
@@ -37,7 +40,8 @@ export default function CurrentConditions({ coordinates }: CurrentConditionsProp
         )}
       </div>
       <div className="order-2 text-3xl font-extrabold tracking-tight sm:order-3 sm:text-4xl md:w-auto md:text-5xl lg:text-7xl">
-        {weatherData && `${roundNumber(weatherData?.main.temp)}°c`}
+        {weatherData &&
+          `${roundNumber(weatherData?.main.temp)}°${unit === 'metric' ? 'c' : 'f'}`}
       </div>
       <div className="order-1 flex w-full flex-col items-center space-y-2 sm:order-4 sm:w-auto md:items-start md:space-y-0.5">
         <div className="text-2xl font-medium tracking-wide lg:text-5xl">

@@ -3,13 +3,20 @@ import HourlyForecastColumn from './HourlyForecastColumn'
 import { ForecastItem } from '@/types/forecast'
 import SkeletonHourlyForecast from './skeletons/SkeletonHourlyForecast'
 import Error from './Error'
+import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
 
 interface HourlyForecastProps {
   coordinates: { lat: number; lon: number }
 }
 
 export default function HourlyForecastTable({ coordinates }: HourlyForecastProps) {
-  const { data: forecastData, isLoading, isError, error } = useFetchForecast(coordinates)
+  const { data: unit } = useUnitOfMeasurement()
+  const {
+    data: forecastData,
+    isLoading,
+    isError,
+    error,
+  } = useFetchForecast(coordinates, unit)
 
   if (isLoading) {
     return (

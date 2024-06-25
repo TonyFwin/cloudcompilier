@@ -8,13 +8,20 @@ import {
 } from 'react-icons/wi'
 import SkeletonWeatherDetails from './skeletons/SkeletonWeatherDetails'
 import Error from './Error'
+import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
 
 interface WeatherDetailsProps {
   coordinates: { lat: number; lon: number }
 }
 
 export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
-  const { data: weatherData, isLoading, isError, error } = useFetchWeather(coordinates)
+  const { data: unit } = useUnitOfMeasurement()
+  const {
+    data: weatherData,
+    isLoading,
+    isError,
+    error,
+  } = useFetchWeather(coordinates, unit)
 
   if (isLoading) {
     return <SkeletonWeatherDetails />
