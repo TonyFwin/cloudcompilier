@@ -5,6 +5,7 @@ import Logo from './components/Logo'
 import Search from './components/Search'
 import WeatherDetails from './components/WeatherDetails'
 import ThemeSwitcher from './components/ThemeSwitcher'
+import UnitSwitcher from './components/UnitSwitcher'
 
 function App() {
   // Default coordinates
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <>
-      <main className="bg-light dark:bg-dark flex h-screen w-screen flex-col overflow-y-auto bg-cover px-8 py-12 dark:bg-gray-800 sm:px-12 md:flex-row md:px-20">
+      <main className="flex h-screen w-screen flex-col overflow-y-auto bg-light bg-cover px-8 py-12 dark:bg-gray-800 dark:bg-dark sm:px-12 md:flex-row md:px-20">
         <div className="w-full flex-col justify-between md:block md:w-3/5 md:space-y-8 lg:w-2/3 xl:w-7/12">
           <Logo />
           <CurrentConditions coordinates={coordinates} />
@@ -25,7 +26,10 @@ function App() {
           <WeatherDetails coordinates={coordinates} />
           <HourlyForecastTable coordinates={coordinates} />
         </div>
-        <ThemeSwitcher />
+        <div className="relative mt-8 flex-col h-12 w-12 items-center font-bold md:absolute md:bottom-16 md:left-16 md:right-auto md:top-auto space-y-4">
+          <ThemeSwitcher />
+          <UnitSwitcher />
+        </div>
       </main>
     </>
   )
