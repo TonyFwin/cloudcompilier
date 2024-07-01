@@ -8,11 +8,13 @@ import ThemeSwitcher from './components/ThemeSwitcher'
 import UnitSwitcher from './components/UnitSwitcher'
 
 function App() {
-  // Default coordinates
-  const [coordinates, setCoordinates] = useState<{ lat: number; lon: number }>({
-    lat: 44.9772995,
-    lon: -93.2654692,
-  })
+  const defaultCoordinates = {
+    lat: import.meta.env.VITE_DEFAULT_COORDINATES_LAT ?? 44.97,
+    lon: (import.meta.env.VITE_DEFAULT_COORDINATES_LON ?? -93.27),
+  }
+  const [coordinates, setCoordinates] = useState<{ lat: number; lon: number }>(
+    defaultCoordinates,
+  )
 
   return (
     <>
@@ -26,7 +28,7 @@ function App() {
           <WeatherDetails coordinates={coordinates} />
           <HourlyForecastTable coordinates={coordinates} />
         </div>
-        <div className="relative mt-8 flex-col h-12 w-12 items-center font-bold md:absolute md:bottom-16 md:left-16 md:right-auto md:top-auto space-y-4">
+        <div className="relative mt-8 h-12 w-12 flex-col items-center space-y-4 font-bold md:absolute md:bottom-16 md:left-16 md:right-auto md:top-auto">
           <ThemeSwitcher />
           <UnitSwitcher />
         </div>
