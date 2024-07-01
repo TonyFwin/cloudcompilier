@@ -6,15 +6,14 @@ import Search from './components/Search'
 import WeatherDetails from './components/WeatherDetails'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import UnitSwitcher from './components/UnitSwitcher'
+import { Coordinates } from './types/coordinates'
 
 function App() {
-  const defaultCoordinates = {
+  const defaultCoordinates: Coordinates = {
     lat: import.meta.env.VITE_DEFAULT_COORDINATES_LAT ?? 44.97,
-    lon: (import.meta.env.VITE_DEFAULT_COORDINATES_LON ?? -93.27),
+    lon: import.meta.env.VITE_DEFAULT_COORDINATES_LON ?? -93.27,
   }
-  const [coordinates, setCoordinates] = useState<{ lat: number; lon: number }>(
-    defaultCoordinates,
-  )
+  const [coordinates, setCoordinates] = useState(defaultCoordinates)
 
   return (
     <>

@@ -3,9 +3,10 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
+import { Coordinates } from '@/types/coordinates'
 
 interface SearchProps {
-  setCoordinates: (coordinates: { lat: number; lon: number }) => void
+  setCoordinates: (coordinates: Coordinates) => void
 }
 
 export default function Search({ setCoordinates }: SearchProps) {

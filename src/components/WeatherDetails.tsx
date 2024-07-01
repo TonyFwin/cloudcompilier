@@ -9,9 +9,10 @@ import {
 import SkeletonWeatherDetails from './skeletons/SkeletonWeatherDetails'
 import Error from './Error'
 import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
+import { Coordinates } from '@/types/coordinates'
 
 interface WeatherDetailsProps {
-  coordinates: { lat: number; lon: number }
+  coordinates: Coordinates
 }
 
 export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {

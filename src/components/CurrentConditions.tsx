@@ -5,9 +5,10 @@ import { roundNumber } from '@/utils/weather.utils'
 import SkeletonCurrentConditions from './skeletons/SkeletonCurrentConditions'
 import Error from './Error'
 import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
+import { Coordinates } from '@/types/coordinates'
 
 interface CurrentConditionsProps {
-  coordinates: { lat: number; lon: number }
+  coordinates: Coordinates
 }
 
 export default function CurrentConditions({ coordinates }: CurrentConditionsProps) {

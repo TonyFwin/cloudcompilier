@@ -1,12 +1,13 @@
 import { useFetchForecast } from '@/hooks/useFetchForecast'
 import HourlyForecastColumn from './HourlyForecastColumn'
 import { ForecastItem } from '@/types/forecast'
+import { Coordinates } from '@/types/coordinates'
 import SkeletonHourlyForecast from './skeletons/SkeletonHourlyForecast'
-import Error from './Error'
 import { useUnitOfMeasurement } from '@/hooks/useUnitOfMeasurement'
+import Error from './Error'
 
 interface HourlyForecastProps {
-  coordinates: { lat: number; lon: number }
+  coordinates: Coordinates
 }
 
 export default function HourlyForecastTable({ coordinates }: HourlyForecastProps) {
