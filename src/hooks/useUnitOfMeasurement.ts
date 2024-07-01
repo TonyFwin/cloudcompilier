@@ -13,7 +13,7 @@ export const useUnitOfMeasurement = () => {
 
   const [unit, setUnit] = useState<UnitOfMeasurement>(getInitialUnit)
 
-  const { data } = useQuery<UnitOfMeasurement>({
+  const { data } = useQuery({
     queryKey: ['unitOfMeasurement'],
     queryFn: () => unit,
     initialData: unit,
