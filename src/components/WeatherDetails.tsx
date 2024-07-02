@@ -62,8 +62,8 @@ export default function WeatherDetails({ coordinates }: WeatherDetailsProps) {
         />
         <WeatherDetail
           description="Wind"
-          value={weatherData?.main.temp_max ?? 0}
-          unit="km/h"
+          value={weatherData?.wind.speed ?? 0}
+          unit={unit === 'metric' ? 'km/h' : 'mph'}
           Icon={WiStrongWind}
           type="default"
         />
