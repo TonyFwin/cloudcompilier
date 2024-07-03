@@ -3,7 +3,7 @@ import { WiMoonAltWaningGibbous2, WiSunrise } from 'react-icons/wi'
 import { useDarkMode } from '@/hooks/useDarkMode'
 
 export default function ThemeSwitcher() {
-  const { data, toggleDarkMode } = useDarkMode()
+  const { isDarkMode, toggleDarkMode } = useDarkMode()
 
   return (
     <div className="flex items-center">
@@ -12,7 +12,7 @@ export default function ThemeSwitcher() {
       </span>
       <Switch
         className="transition duration-200 ease-in-out data-[state=checked]:bg-white data-[state=unchecked]:bg-black"
-        checked={data === true}
+        checked={isDarkMode === true}
         onCheckedChange={toggleDarkMode}
         id="darkmode-toggle"
       />
