@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { UnitOfMeasurement } from '@/types/measurement'
 
@@ -27,10 +27,6 @@ export const useUnitOfMeasurement = () => {
     queryClient.invalidateQueries({ queryKey: ['forecast'] })
     queryClient.invalidateQueries({ queryKey: ['weatherData'] })
   }
-
-  useEffect(() => {
-    queryClient.setQueryData(['unitOfMeasurement'], unit)
-  }, [unit, queryClient])
 
   return { data, toggleUnit }
 }
