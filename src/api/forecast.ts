@@ -9,7 +9,7 @@ export const fetchForecastData = async (
   unit: UnitOfMeasurement,
 ) => {
   const apiKey = import.meta.env.VITE_API_KEY as string
-  const count = import.meta.env.VITE_DEFAULT_ ?? 8
+  const count = import.meta.env.VITE_DEFAULT_COUNT ?? 8
 
   const { data } = await axiosInstance.get<ForecastData>(
     `${baseUrl}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&cnt=${count}&appid=${apiKey}`,
