@@ -21,7 +21,7 @@ function App() {
         <Logo />
         <CurrentConditions coordinates={coordinates} />
       </div>
-      <div className="h-fit w-full space-y-4 divide-y divide-black bg-white/50 bg-opacity-50 p-6 dark:divide-white dark:bg-black/50 md:w-2/5 lg:w-1/3 xl:w-5/12">
+      <div className="h-fit w-full space-y-4 divide-y divide-black bg-white/50 bg-opacity-50 p-6 dark:divide-white dark:bg-black/65 md:w-2/5 lg:w-1/3 xl:w-5/12">
         <Search setCoordinates={setCoordinates} />
         <WeatherDetails coordinates={coordinates} />
         <HourlyForecastTable coordinates={coordinates} />
