@@ -3,7 +3,7 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useFetchCoordinates } from '@/hooks/useFetchCoordinates'
-import { Coordinates } from '@/types/coordinates'
+import { Coordinates, CoordinatesData } from '@/types/coordinates'
 import Error from './Error'
 
 interface SearchProps {
@@ -13,6 +13,7 @@ interface SearchProps {
 export default function Search({ setCoordinates }: SearchProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [isValidSearch, setIsValidSearch] = useState(true)
+  const [locations, setLocations] = useState<CoordinatesData[]>([])
 
   const { isLoading, refetch, isError, error } = useFetchCoordinates(searchTerm)
 
@@ -25,11 +26,17 @@ export default function Search({ setCoordinates }: SearchProps) {
     const newCoordinates = res.data
 
     if (newCoordinates && newCoordinates.length > 0) {
-      setCoordinates({ lat: newCoordinates[0].lat, lon: newCoordinates[0].lon })
+      setLocations(newCoordinates)
       setIsValidSearch(true)
     } else {
       setIsValidSearch(false)
     }
+  }
+
+  const selectLocation = (location: CoordinatesData) => {
+    setCoordinates({ lat: location.lat, lon: location.lon })
+    setLocations([])
+    setSearchTerm('')
   }
 
   if (isError) {
@@ -37,7 +44,7 @@ export default function Search({ setCoordinates }: SearchProps) {
   }
 
   return (
-    <form className="w-full flex-col">
+    <form className="relative w-full flex-col">
       <div className="flex items-center">
         <Input
           placeholder="Search"
@@ -56,8 +63,24 @@ export default function Search({ setCoordinates }: SearchProps) {
         </Button>
       </div>
       {!isValidSearch && (
-        <div className="w-full mt-2 pl-3">
+        <div className="mt-2 w-full pl-3">
           <Error message="City not found. Please try again." />
+        </div>
+      )}
+      {locations.length > 0 && (
+        <div className="absolute mt-2 w-full rounded-md border border-gray-300 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {locations.map((location, index) => (
+              <li
+                key={index}
+                onClick={() => selectLocation(location)}
+                className="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {location.name}{location.state ? `, ${location.state}` : ''},{' '}
+                {location.country}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </form>
