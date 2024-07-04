@@ -13,12 +13,14 @@ interface SearchProps {
 export default function Search({ setCoordinates }: SearchProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [isValidSearch, setIsValidSearch] = useState(true)
+  const [apiError, setApiError] = useState('')
   const [locations, setLocations] = useState<CoordinatesData[]>([])
 
   const { isLoading, refetch, isError, error } = useFetchCoordinates(searchTerm)
 
   const search = async (event: React.SyntheticEvent) => {
     event.preventDefault()
+    setApiError('')
 
     if (searchTerm.length < 1) return
 
@@ -28,6 +30,9 @@ export default function Search({ setCoordinates }: SearchProps) {
     if (newCoordinates && newCoordinates.length > 0) {
       setLocations(newCoordinates)
       setIsValidSearch(true)
+    } else if (isError) {
+      setIsValidSearch(true)
+      setApiError(error.message)
     } else {
       setIsValidSearch(false)
     }
@@ -37,10 +42,6 @@ export default function Search({ setCoordinates }: SearchProps) {
     setCoordinates({ lat: location.lat, lon: location.lon })
     setLocations([])
     setSearchTerm('')
-  }
-
-  if (isError) {
-    return <Error message={error.message} />
   }
 
   return (
@@ -62,11 +63,15 @@ export default function Search({ setCoordinates }: SearchProps) {
           <MagnifyingGlassIcon className="text-black placeholder-gray-700 dark:text-white xl:text-xl" />
         </Button>
       </div>
-      {!isValidSearch && (
+
+      {isError && apiError && <Error message={error.message} />}
+
+      {!isValidSearch && !isError && (
         <div className="mt-2 w-full pl-3">
           <Error message="City not found. Please try again." />
         </div>
       )}
+
       {locations.length > 0 && (
         <div className="absolute mt-2 w-full rounded-md border border-gray-300 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
           <ul className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -76,8 +81,8 @@ export default function Search({ setCoordinates }: SearchProps) {
                 onClick={() => selectLocation(location)}
                 className="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                {location.name}{location.state ? `, ${location.state}` : ''},{' '}
-                {location.country}
+                {location.name}
+                {location.state ? `, ${location.state}` : ''}, {location.country}
               </li>
             ))}
           </ul>
